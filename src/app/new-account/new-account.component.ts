@@ -12,7 +12,11 @@ export class NewAccountComponent {
 
   //Creates a dependency of the LoggingService
   //Creates an instance of the loggingService
-  constructor(private loggingService: LoggingService, private accountsService: AccountsService){}
+  constructor(private loggingService: LoggingService, private accountsService: AccountsService){
+    this.accountsService.statusUpdated.subscribe(
+      (status: string) => alert('new status ' + status)
+    );
+  }
 
 
   onCreateAccount(accountName: string, accountStatus: string) {
